@@ -8,10 +8,6 @@ A fully serverless feedback app powered by **S3 (static site)**, **API Gateway**
 - Lambda function receives the POST and writes to DynamoDB
 - IAM roles grant least‑privilege access for Lambda and DynamoDB
 
-> Add your diagram image to `screenshots/architecture.png` and embed it below.
-
-![Architecture](screenshots/architecture.png)
-
 ## Implementation (Condensed)
 1. **IAM**
    - Create an execution role for Lambda with basic logging.
