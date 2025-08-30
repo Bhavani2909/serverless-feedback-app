@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form</title>
+</head>
+<body>
+  <h2>Submit Feedback</h2>
+  <form id="feedbackForm">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+    <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    const apiUrl = "YOUR_API_URL"; // Replace with your API Gateway endpoint
+    document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ name, message })
+      });
+
+      const result = await response.json();
+      document.getElementById("response").innerText = result.message || "Submitted!";
+    });
+  </script>
+</body>
+</html>
